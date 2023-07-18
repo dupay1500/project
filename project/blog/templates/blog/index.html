@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for article in articles %}
+<ul>
+    <li>
+        <p>Nomi: {{ article.title }}</p>
+        <p>Matni: {{ article.content }}</p>
+        <p>Ko'rishlar soni: {{ article.view }}</p>
+        <p>yuklangan vaqti: {{ article.created_at }}</p>
+    </li>
+</ul>
+{% endfor %}
+
+</body>
+</html>
