@@ -8,6 +8,7 @@ from .models import Article
 def index(request):
     articles = Article.objects.all()
     context = {
-        'articles': articles
+        'articles': articles,
+        "title": "Maqolalar ro'yxati"
     }
     return render(request, 'blog/index.html', context)
