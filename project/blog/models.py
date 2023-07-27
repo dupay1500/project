@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse, reverse_lazy
 
 # Create your models here.
 
@@ -8,6 +9,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('category_list', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = 'Kategoriya'
@@ -27,6 +31,10 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('article_detail', kwargs={'pk': self.pk})
+
 
     class Meta:
         verbose_name = 'Maqola'

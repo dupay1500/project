@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+{% endblock style %}
+
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+<div class="card text-center">
+    <div class="card-header">{{ article.category.title }}</div>
+    <div class="card-body">
+        <h5 class="card-title">{{ article.title }}</h5>
+        <p class="card-text">{{ article.content|linebreaks }}</p>
+        <a href="#" class="btn btn-primary">Batafsil</a>
+    </div>
+    <div class="card-footer text-muted">{{ article.created_at }}</div>
+</div>
+{% endblock main %}
+
+
+{% block scripts %}
+<script src="{% static 'blog/js/scripts.js' %}"></script>
+{% endblock scripts %}

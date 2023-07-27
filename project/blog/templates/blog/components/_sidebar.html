@@ -1,6 +1,6 @@
 <div class="list-group list-group-light">
     {% for category in categories %}
-    <a href="{% url 'category_list' category.pk %}" class="list-group-item list-group-item-action px-3 border-0 ripple">
+    <a href="{{ category.get_absolute_url }}" class="list-group-item list-group-item-action px-3 border-0 ripple">
         {{ category.title }}
     </a>
     {% endfor %}

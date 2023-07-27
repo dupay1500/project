@@ -23,6 +23,10 @@
     />
 
 
+    {% block style %}
+    {% endblock style %}
+
+
     <title>
         {% block title %}
         Django project
@@ -48,10 +52,17 @@
 
     <footer>
         {% block footer %}
+        {% include 'layout/footer.html' %}
         {% endblock footer %}
     </footer>
 
 </div>
+
+
+
+
+{% block scripts %}
+{% endblock scripts %}
 
 
 <!-- MDB -->
