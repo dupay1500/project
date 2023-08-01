@@ -1,57 +1,60 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <!-- Container wrapper -->
-            <div class="container">
-                <!-- Navbar brand -->
-                <a class="navbar-brand me-2" href="{% url 'index' %}">
-                    <img
-                            src="{% static 'blog/img/logo.png' %}"
-                            height="56"
-                            alt="MDB Logo"
-                            loading="lazy"
-                            style="margin-top: -1px;"
-                    />
-                </a>
+    <!-- Container wrapper -->
+    <div class="container">
+        <!-- Navbar brand -->
+        <a class="navbar-brand me-2" href="{% url 'index' %}">
+            <img
+                    src="{% static 'blog/img/logo.png' %}"
+                    height="56"
+                    alt="MDB Logo"
+                    loading="lazy"
+                    style="margin-top: -1px;"
+            />
+        </a>
 
-                <!-- Toggle button -->
-                <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-mdb-toggle="collapse"
-                        data-mdb-target="#navbarButtonsExample"
-                        aria-controls="navbarButtonsExample"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                >
-                    <i class="fas fa-bars"></i>
+        <!-- Toggle button -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample"
+                aria-controls="navbarButtonsExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Asosiy sahifa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lyuboy' %}">Maqola qo'shish</a>
+                </li>
+            </ul>
+            <!-- Left links -->
+
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-link px-3 me-2">
+                    Login
                 </button>
-
-                <!-- Collapsible wrapper -->
-                <div class="collapse navbar-collapse" id="navbarButtonsExample">
-                    <!-- Left links -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'index' %}">Asosiy sahifa</a>
-                        </li>
-                    </ul>
-                    <!-- Left links -->
-
-                    <div class="d-flex align-items-center">
-                        <button type="button" class="btn btn-link px-3 me-2">
-                            Login
-                        </button>
-                        <button type="button" class="btn btn-primary me-3">
-                            Sign up for free
-                        </button>
-                        <a
-                                class="btn btn-dark px-3"
-                                href="https://github.com/mdbootstrap/mdb-ui-kit"
-                                role="button"
-                        ><i class="fab fa-github"></i
-                        ></a>
-                    </div>
-                </div>
-                <!-- Collapsible wrapper -->
+                <button type="button" class="btn btn-primary me-3">
+                    Sign up for free
+                </button>
+                <a
+                        class="btn btn-dark px-3"
+                        href="https://github.com/mdbootstrap/mdb-ui-kit"
+                        role="button"
+                ><i class="fab fa-github"></i
+                ></a>
             </div>
-            <!-- Container wrapper -->
-        </nav>
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>

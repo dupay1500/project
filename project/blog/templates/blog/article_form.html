@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if form.error %}
+        {% for field in form %}
+            {% for error in form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Qo'shish</button>
+</form>
+
+{% endblock main %}
