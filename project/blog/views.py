@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import ListView, DeleteView, DetailView, UpdateView, CreateView
 from django.urls import reverse_lazy, reverse
 
-from .models import Article, Category
+from .models import Article, Category, User
 from .forms import ArticleForm
 
 # Create your views here.
@@ -41,6 +41,51 @@ class NewArticle(CreateView):
     success_url = reverse_lazy('index')
 
 
+class ArticleListByCategory(ArticleList):
+    def get_queryset(self):
+        return Article.objects.filter(category_id=self.kwargs['pk'], is_published=True)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ArticleListByCategory, self).get_context_data()
+        category = Category.objects.get(pk=self.kwargs['pk'])
+        context['title'] = category.title
+        return context
+
+
+class SearchResults(ArticleList):
+    def get_queryset(self):
+        word = self.request.GET.get('q')
+        articles = Article.objects.filter(title__contains=word)
+        return articles
+
+
+class ArticleUpdate(UpdateView):
+    model = Article
+    form_class = ArticleForm
+    template_name = 'blog/article_form.html'
+
+
+class ArticleDelete(DeleteView):
+    model = Article
+    success_url = reverse_lazy('index')
+
+
+
+def profile(request):
+    if request.user.is_authenticated:
+        user_id = request.user.pk
+        user = User.objects.get(pk=user_id)
+
+        context = {
+            'title': "Sizning profilingiz!",
+            'user': user
+        }
+
+        return render(request, "blog/profile.html", context)
+    else:
+        return HttpResponse("Saytga kir Bratishka😡")
+
+
 
 
 
@@ -58,14 +103,14 @@ class NewArticle(CreateView):
 #     return render(request, 'blog/all_articles.html', context)
 
 
-def category_list(request, pk):
-    articles = Article.objects.filter(category_id=pk, is_published=True)
-    # categories = Category.objects.all()
-    context = {
-        'articles': articles,
-        # 'categories': categories
-    }
-    return render(request, "blog/all_articles.html", context)
+# def category_list(request, pk):
+#     articles = Article.objects.filter(category_id=pk, is_published=True)
+#     # categories = Category.objects.all()
+#     context = {
+#         'articles': articles,
+#         # 'categories': categories
+#     }
+#     return render(request, "blog/all_articles.html", context)
 
 
 # def article_detail(request, pk):

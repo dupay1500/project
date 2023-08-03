@@ -21,7 +21,11 @@
     {% endif %}
 
     {{ form.as_p }}
+    {% if 'update' in request.path %}
+    <button type="submit" class="btn btn-primary">O'zgarishni saqlash</button>
+    {% else %}
     <button type="submit" class="btn btn-primary">Qo'shish</button>
+    {% endif %}
 </form>
 
 {% endblock main %}
